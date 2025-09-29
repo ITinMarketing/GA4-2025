@@ -1,30 +1,13 @@
-// GA4
+// Вставьте сюда ваш Measurement ID из Google Analytics (GA4)
+const GA_MEASUREMENT_ID = "G-6PM8STBXLR";
+
 window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
+function gtag(){ dataLayer.push(arguments); }
 gtag('js', new Date());
-gtag('config', 'G-T0P4LM7238');
+gtag('config', GA_MEASUREMENT_ID);
 
-// Функция перехода на checkout
-function goToCheckout(product) {
-  window.location.href = "checkout.html?product=" + product;
+// функция перехода на checkout с передачей товара
+function goToCheckout(productName) {
+  window.location.href = "checkout.html?product=" + encodeURIComponent(productName);
 }
 
-// Начало оформления
-function logBeginCheckout(product) {
-  gtag('event', 'begin_checkout', {
-    currency: 'UAH',
-    items: [{ item_id: product, item_name: product }]
-  });
-  console.log("Event: begin_checkout", product);
-}
-
-// Завершение покупки
-function logPurchase(product) {
-  gtag('event', 'purchase', {
-    transaction_id: Date.now().toString(),
-    value: 400,
-    currency: 'UAH',
-    items: [{ item_id: product, item_name: product }]
-  });
-  console.log("Event: purchase", product);
-}
