@@ -904,3 +904,7 @@ ul.social2_icon li a:hover {
 
 
 /** end footer **/
+
+a.read_more.mar_top {
+  cursor: pointer;
+}
