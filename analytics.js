@@ -1,5 +1,5 @@
 // Вставьте сюда ваш Measurement ID из Google Analytics (GA4)
-const GA_MEASUREMENT_ID = "G-6PM8STBXLR";
+const GA_MEASUREMENT_ID = "G-T0P4LM7238";
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
@@ -10,4 +10,5 @@ gtag('config', GA_MEASUREMENT_ID);
 function goToCheckout(productName) {
   window.location.href = "checkout.html?product=" + encodeURIComponent(productName);
 }
+
 
