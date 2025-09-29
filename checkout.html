@@ -1,38 +1,42 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Checkout</title>
+  <title>Оформление заказа</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T0P4LM7238"></script>
   <script src="analytics.js"></script>
 </head>
 <body>
   <h1>Оформление заказа</h1>
-  <p id="productInfo"></p>
 
-  <button onclick="submitOrder()">Подтвердить заказ</button>
+  <form id="checkoutForm">
+    <p>Товар: <span id="productName"></span></p>
+    <label>Имя: <input type="text" required></label><br>
+    <label>Email: <input type="email" required></label><br>
+    <button type="submit">Завершить заказ</button>
+  </form>
 
   <script>
-    // читаем товар из URL
     const urlParams = new URLSearchParams(window.location.search);
-    const productName = urlParams.get("product");
+    const product = urlParams.get("product");
 
-    document.getElementById("productInfo").textContent = 
-      "Вы заказываете: " + productName;
+    const productNames = {
+      pro1: "Протеин Variations",
+      pro2: "Протеин Passages",
+      pro3: "Протеин Variations 2",
+      pro4: "Протеин Pedicure"
+    };
 
-    function submitOrder() {
-      // событие покупки в GA
-      gtag("event", "purchase", {
-        currency: "USD",
-        value: 1,
-        items: [
-          { item_name: productName }
-        ]
-      });
+    document.getElementById("productName").innerText = productNames[product] || "Неизвестный товар";
 
-      alert("Заказ оформлен: " + productName);
-    }
+    // Событие начала оформления
+    logBeginCheckout(product);
+
+    document.getElementById("checkoutForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      logPurchase(product);
+      alert("Заказ оформлен (учебный пример)!");
+    });
   </script>
 </body>
 </html>
-
-
