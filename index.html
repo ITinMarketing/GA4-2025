@@ -55,9 +55,18 @@
       </div>
     </div>
   </div>
-
+ <script src="analytics.js"></script>
+  <script>
+    document.querySelectorAll(".buy-btn").forEach(btn => {
+      btn.addEventListener("click", function() {
+        let product = this.getAttribute("data-product");
+        document.getElementById("productName").textContent = product;
+      });
+    });
+  </script>
 </body>
 </html>
+
 
 
 
